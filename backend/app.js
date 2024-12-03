@@ -1,18 +1,3 @@
-/* Scenario-1 */
-// const express = require('express');
-// const app = express();
-// const PORT = 3000;
-
-// app.use(express.static('public'));
-
-// app.get('/api', (req, res) => {
-//   res.json({ message: 'Hello from the backend!' });
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Backend is running on http://localhost:${PORT}`);
-// });
-
 const express = require('express');
 const axios = require('axios');
 const xml2js = require('xml2js');
