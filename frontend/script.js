@@ -1,44 +1,43 @@
-let flip_flop = ""
-const setTimeoutFunc = (ms) => {
-  setTimeout(() => {
-    flip_flop = flip_flop === "UP"? "DOWN":"UP";
-    document.getElementById('timeout_response').innerText = flip_flop + " after 2000 miliseconds";
-  }, ms);
-}
+const print = (msg) => {
+  newDiv = document.createElement("div");
+  newDiv.innerText = msg;
+  newDiv.style.fontSize = '24px';
+  document.body.appendChild(newDiv);
+  newDiv = document.createElement("div");
+  newDiv.innerText = " ";
+  document.body.appendChild(newDiv);
+} 
 
-const setImmediateFunc = async() => {
-  try {
-    setImmediate(() => {
-      document.getElementById('immediate_response').innerText = "setImmediate applied.";
-    });
-  } catch (error) {
-    const response = await fetch('/api');
-    const data = await response.json();
-    document.getElementById('immediate_response').innerText = "setImmediate applied at BE: " + JSON.stringify(data);
-  }
-}
-
-let counter = 0
-const setIntervalFunc = (ms) => {
-  setInterval(() => {
-    counter = counter +1;
-    document.getElementById('interval_response').innerText = "setInterval applied: " + counter;
-  }, ms);
-}
-
-
-document.getElementById('timeout').addEventListener('click', async () => {
-  document.getElementById('timeout_response').innerText = "setTimeout started.";
-  setTimeoutFunc(2000);
+// Event Loop Examples
+console.log('Start');
+print('Start')
+Promise.resolve().then(() => {
+  console.log('Promise');
+  print('Promise')
 });
+console.log('End');
+print('End')
 
-document.getElementById('immediate').addEventListener('click', async () => {
-  document.getElementById('immediate_response').innerText = "";
-  setImmediateFunc();
-});
 
-document.getElementById('interval').addEventListener('click', async () => {
-  counter = 0;
-  document.getElementById('interval_response').innerText = "setInterval started.";
-  setIntervalFunc(1000);
-});
+// console.log('Start');
+// print('Start')
+// setTimeout(() => {
+//   console.log('Timeout');
+//   print('Timeout')
+// }, 1000);
+// console.log('End');
+// print('End')
+
+
+
+
+// // What is IIFE (Immediately Invoked Function Expression)
+// (async() => {
+//   console.log('Start');print('Start')
+//   await Promise.resolve().then(() => {
+//     console.log('Promise');print('Promise')
+//   });
+//   console.log('End');print('End')
+// })();
+
+/* Reference:  http://latentflip.com/loupe */
