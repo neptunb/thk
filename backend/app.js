@@ -12,4 +12,4 @@ app.listen(PORT, () => {
   console.log(`Backend is running on http://localhost:${PORT}`);
 });
 
-// Bu örnekde localhost tarafına çağrı yapılmıyor.
+// Bu örnekde localhost tarafına çağrı YAPILIYOR.
