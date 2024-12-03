@@ -8,7 +8,8 @@ const print = (msg) => {
   document.body.appendChild(newDiv);
 } 
 
-// Event Loop Examples
+/* ************************************************* Asynchronous Callbacks *****  */
+
 console.log('Start');
 print('Start')
 Promise.resolve().then(() => {
