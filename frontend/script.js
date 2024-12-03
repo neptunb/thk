@@ -25,8 +25,12 @@ document.getElementById('fetchData').addEventListener('click', async () => {
     } else {
       // Render currency rates
       const ratesList = data.rates.map(
-        (rate) =>
-          `${rate.name} (${rate.code}): Buying - ${rate.forexBuying}, Selling - ${rate.forexSelling}`
+        (rate) =>{
+          console.log("Rate: ", rate.code);
+          if (rate.code === 'USD') {
+          return `${rate.name} (${rate.code}): Buying - ${rate.forexBuying}, Selling - ${rate.forexSelling}`
+          }
+        }
       );
       document.getElementById('response').innerText = ratesList.join('\n');
     }
