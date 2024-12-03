@@ -5,7 +5,9 @@ const PORT = 3000;
 app.use(express.static('public'));
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Arka plandan saygılar' });
+  setImmediate(() => {
+    res.json({ message: 'Hi, I am Node Immediate1' });
+  })  
 });
 
 app.listen(PORT, () => {

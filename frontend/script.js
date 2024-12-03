@@ -6,15 +6,16 @@ const setTimeoutFunc = (ms) => {
   }, ms);
 }
 
-const setImmediateFunc = () => {
+const setImmediateFunc = async() => {
   try {
     setImmediate(() => {
       document.getElementById('immediate_response').innerText = "setImmediate applied.";
     });
   } catch (error) {
-    document.getElementById('immediate_response').innerText = "setImmediate runs only at node environments.";
+    const response = await fetch('/api');
+    const data = await response.json();
+    document.getElementById('immediate_response').innerText = "setImmediate applied at BE: " + JSON.stringify(data);
   }
-  
 }
 
 let counter = 0
