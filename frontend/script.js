@@ -1,0 +1,36 @@
+// document.getElementById('fetchData').addEventListener('click', async () => {
+//   const response = await fetch('/api');
+//   const data = await response.json();
+//   document.getElementById('response').innerText = data.message;
+// });
+
+
+document.getElementById('fetchData').addEventListener('click', async () => {
+  const url = "https://www.tcmb.gov.tr/kurlar/today.xml";
+  const response = await fetch(url);
+  const data = await response.json();
+  document.getElementById('response').innerText = data.message;
+});
+
+document.getElementById('fetchData').addEventListener('click', async () => {
+
+  const url = `/api/currency`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.error) {
+      document.getElementById('response').innerText = `Error: ${data.error}`;
+    } else {
+      // Render currency rates
+      const ratesList = data.rates.map(
+        (rate) =>
+          `${rate.name} (${rate.code}): Buying - ${rate.forexBuying}, Selling - ${rate.forexSelling}`
+      );
+      document.getElementById('response').innerText = ratesList.join('\n');
+    }
+  } catch (error) {
+    document.getElementById('response').innerText = 'Error fetching data.';
+  }
+});
