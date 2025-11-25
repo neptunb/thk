@@ -4,12 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <title>Frontend</title>
+  <title>Worker Örneği</title>
 </head>
 <body>
   <h1>Frontend</h1>
-
   
+  <input id="inputNumber" type="number" placeholder="Fibonacci sayısını girin (örn: 40)" />
+  <button id="fibonacciButton">Fibonacci Hesapla</button>
+  <div style="display: flex; gap: 20px; margin-top: 20px;">
+    <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
+      <h3>Ana Thread (Süre)</h3>
+      <div id="counterDisplay" style="font-size: 24px; font-weight: bold;">0 ms</div>
+    </div>
+    <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
+      <h3>Fibonacci Sonucu</h3>
+      <div id="fibonacciResult" style="font-size: 24px; font-weight: bold;">-</div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
