@@ -32,9 +32,16 @@ const calculateFibonacciInWorker = () => {
         intervalId = null;
     }
     
-    const number = parseInt(document.querySelector('#inputNumber').value);
+    const inputElement = document.querySelector('#inputNumber');
+    let number = parseInt(inputElement.value);
     
-    if (isNaN(number) || number < 0) {
+    // If input is empty, use 44 as default
+    if (isNaN(number) || inputElement.value.trim() === '') {
+        number = 44;
+        inputElement.value = 44;
+    }
+    
+    if (number < 0) {
         alert("Lütfen geçerli bir sayı girin!");
         return;
     }
@@ -83,9 +90,16 @@ const calculateFibonacciBlocking = () => {
         intervalIdBlocking = null;
     }
     
-    const number = parseInt(document.querySelector('#inputNumberBlocking').value);
+    const inputElement = document.querySelector('#inputNumberBlocking');
+    let number = parseInt(inputElement.value);
     
-    if (isNaN(number) || number < 0) {
+    // If input is empty, use 44 as default
+    if (isNaN(number) || inputElement.value.trim() === '') {
+        number = 44;
+        inputElement.value = 44;
+    }
+    
+    if (number < 0) {
         alert("Lütfen geçerli bir sayı girin!");
         return;
     }

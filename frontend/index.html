@@ -7,27 +7,27 @@
   <title>Worker Örneği</title>
 </head>
 <body>
-  <h1>Frontend</h1>
-  
-  <h2>Web Worker Örneği (Non-Blocking)</h2>
-  <input id="inputNumber" type="number" placeholder="Fibonacci sayısını girin (örn: 40)" />
-  <button id="fibonacciButton">Fibonacci Hesapla (Worker)</button>
+  <h1>Web Worker Example @Frontend</h1>
+  <br/>
+  <h2>With Unblocking (Main Thread)</h2>
+  <input id="inputNumber" type="number" placeholder="Enter a number (e.g. 44)" style="font-size: 32px; padding: 12px; width: 400px;" />
+  <button id="fibonacciButton" style="font-size: 32px; padding: 12px; width: 400px;">Calculate Fibonacci</button>
   <div style="display: flex; gap: 20px; margin-top: 20px;">
     <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
-      <h3>Ana Thread (Süre)</h3>
+      <h3>Main Thread (Time)</h3>
       <div id="counterDisplay" style="font-size: 24px; font-weight: bold;">0 ms</div>
     </div>
     <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
-      <h3>Fibonacci Sonucu</h3>
+      <h3>Fibonacci Result</h3>
       <div id="fibonacciResult" style="font-size: 24px; font-weight: bold;">-</div>
     </div>
   </div>
 
   <hr style="margin: 40px 0; border: 2px solid #ccc;">
 
-  <h2>Blocking Örneği (Main Thread)</h2>
-  <input id="inputNumberBlocking" type="number" placeholder="Fibonacci sayısını girin (örn: 40)" />
-  <button id="fibonacciButtonBlocking">Fibonacci Hesapla (Blocking)</button>
+  <h2>With Blocking (Main Thread)</h2>
+  <input id="inputNumberBlocking" type="number" placeholder="Enter a number (e.g. 44)" style="font-size: 32px; padding: 12px; width: 400px;" />
+  <button id="fibonacciButtonBlocking" style="font-size: 32px; padding: 12px; width: 400px;">Calculate Fibonacci</button>
   <div style="display: flex; gap: 20px; margin-top: 20px;">
     <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
       <h3>Ana Thread (Süre)</h3>
