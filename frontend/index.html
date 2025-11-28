@@ -7,17 +7,17 @@
   <title>Worker Örneği</title>
 </head>
 <body>
-  <h1>Frontend</h1>
+  <h1>Web Worker Example @Frontend</h1>
   
-  <input id="inputNumber" type="number" placeholder="Fibonacci sayısını girin (örn: 40)" />
-  <button id="fibonacciButton">Fibonacci Hesapla</button>
+  <input id="inputNumber" type="number" placeholder="Enter a number (e.g. 44)" style="font-size: 32px; padding: 12px; width: 400px;" />
+  <button id="fibonacciButton" style="font-size: 32px; padding: 12px; width: 400px;">Calculate Fibonacci</button>
   <div style="display: flex; gap: 20px; margin-top: 20px;">
     <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
-      <h3>Ana Thread (Süre)</h3>
+      <h3>Main Thread (Time)</h3>
       <div id="counterDisplay" style="font-size: 24px; font-weight: bold;">0 ms</div>
     </div>
     <div style="flex: 1; border: 1px solid #ccc; padding: 10px; min-height: 200px;">
-      <h3>Fibonacci Sonucu</h3>
+      <h3>Fibonacci Result</h3>
       <div id="fibonacciResult" style="font-size: 24px; font-weight: bold;">-</div>
     </div>
   </div>
