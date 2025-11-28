@@ -8,15 +8,23 @@ const print = (msg) => {
   document.body.appendChild(newDiv);
 } 
 
+
 // Event Loop Examples
-console.log('Start');
-print('Start')
-Promise.resolve().then(() => {
-  console.log('Promise');
-  print('Promise')
-});
-console.log('End');
-print('End')
+console.log('Start!');
+print('Start!');
+
+setTimeout(() => {
+  console.log('Timeout!');
+  print('Timeout!')
+}, 0);
+
+Promise.resolve('Promise!')
+  .then((res) => {
+    console.log(res);
+    print(res)
+  });
+console.log('End!');
+print('End!')
 
 
 // console.log('Start');
