@@ -26,6 +26,11 @@ Promise.resolve('Promise!')
 console.log('End!');
 print('End!')
 
+queueMicrotask(() => {
+    console.log("microtask completed!");
+    print("microtask completed!");
+  });
+
 
 // console.log('Start');
 // print('Start')
