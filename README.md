@@ -52,6 +52,7 @@ thk_examples
 4. To test the running page, open a browser and navigate to:
 
    ```
+   http://localhost:8080 
    http://localhost:3000
    ```
 5. You should see the page. It contains one or more buttons depending on the selected code.
