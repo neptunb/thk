@@ -1,0 +1,9 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend with live reload",
+  "scripts": {
+    "dev": "npx --yes live-server --port=8080 --open=/index.html --watch=."
+  }
+}
+
