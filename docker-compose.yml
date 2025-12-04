@@ -9,6 +9,8 @@ services:
       - ./backend:/usr/src/app
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
+  # Frontend service
+  # live code for FE update at localhost:8080
   frontend:
     image: node:18-alpine
     working_dir: /app
