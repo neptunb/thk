@@ -1,5 +1,6 @@
 services:
   app:
+    container_name: backend
     build:
       context: .
       dockerfile: Dockerfile
@@ -7,11 +8,13 @@ services:
       - "3000:3000"  # Exposing port 3000
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
   # Frontend service
   # live code for FE update at localhost:8080
   frontend:
+    container_name: frontend
     image: node:18-alpine
     working_dir: /app
     volumes:
