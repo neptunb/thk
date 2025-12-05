@@ -3,10 +3,12 @@ JS Event Loop Examples
 
 # thk_examples Instructions
 
-## Copy and Paste the Folder or Dowbload from GitHub
+## Download from GitHub
+https://github.com/neptunb/thk/blob/Zip-File-With-Local-Git-Repo/THK.zip
+
+<img width="951" height="455" alt="THK-zip" src="https://github.com/user-attachments/assets/fb272e7b-9d68-4b84-8bcd-f37a57f6f43c" />
 
 
-Copy and paste the folder **"thk_examples"**.
 
 ### Folder Structure
 
@@ -15,7 +17,7 @@ thk_examples
      |
      |-- my_localhost_git_origin      <-- this folder is used for git repository
      |-- README.txt
-     |-- Screen
+     |-- Screen X
      |-- THKJS                        <-- this folder has code examples
             |- backend
             |- docker-compose.yml
