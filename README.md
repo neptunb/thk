@@ -1,9 +1,10 @@
-# thk
+# THK
 JS Event Loop Examples
 
 # thk_examples Instructions
 
-## Copy and Paste the Folder
+## Copy and Paste the Folder or Dowbload from GitHub
+
 
 Copy and paste the folder **"thk_examples"**.
 
