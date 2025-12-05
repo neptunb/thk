@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS Nedir? - Görsel Açıklama</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
+    
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --accent-red: #ef4444;
+      --accent-green: #22c55e;
+      --accent-blue: #3b82f6;
+      --accent-purple: #a855f7;
+      --accent-orange: #f97316;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-color: #334155;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+    
+    .highlight {
+      background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    
+    .section {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .icon {
+      font-size: 1.8rem;
+    }
+    
+    .diagram {
+      background: #0d1321;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      overflow-x: auto;
+    }
+    
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    
+    .box {
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 140px;
+      font-weight: 600;
+    }
+    
+    .box-browser {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+    
+    .box-backend {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+    }
+    
+    .box-tcmb {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+    }
+    
+    .arrow {
+      font-size: 2rem;
+      color: var(--text-secondary);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    .result {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    
+    .result-error {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--accent-red);
+      border: 1px solid var(--accent-red);
+    }
+    
+    .result-success {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green);
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .comparison-table th {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+    
+    .comparison-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    
+    .check {
+      color: var(--accent-green);
+      font-size: 1.2rem;
+    }
+    
+    .cross {
+      color: var(--accent-red);
+      font-size: 1.2rem;
+    }
+    
+    .code-block {
+      background: #0d1321;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+      border-left: 4px solid var(--accent-purple);
+    }
+    
+    .summary-box {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.1));
+      border: 1px solid var(--accent-purple);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .summary-box h3 {
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .quote {
+      font-style: italic;
+      padding: 1rem;
+      border-left: 3px solid var(--accent-blue);
+      margin: 0.75rem 0;
+      background: rgba(59, 130, 246, 0.05);
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .quote.browser {
+      border-left-color: var(--accent-blue);
+    }
+    
+    .quote.nodejs {
+      border-left-color: var(--accent-green);
+    }
+    
+    .label {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    
+    .label-browser {
+      background: var(--accent-blue);
+    }
+    
+    .label-nodejs {
+      background: var(--accent-green);
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 CORS Nedir?</h1>
+    <p class="subtitle">Cross-Origin Resource Sharing - <span class="highlight">Sadece Tarayıcıda Çalışır!</span></p>
+    
+    <!-- Senaryo 1 -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="icon">🌐</span>
+        Senaryo 1: Tarayıcı → TCMB (CORS Hatası)
+      </h2>
+      
+      <div class="diagram">
+        <div class="flow">
+          <div class="box box-browser">
+            🌐 Browser<br>
+            <small>localhost:3000</small>
+          </div>
+          <div class="arrow">➡️</div>
+          <div style="text-align: center; color: var(--text-secondary);">
+            <div>HTTP İstek</div>
+            <small>Origin: localhost</small>
+          </div>
+          <div class="arrow">➡️</div>
+          <div class="box box-tcmb">
+            🏦 TCMB<br>
+            <small>Sunucusu</small>
+          </div>
+        </div>
+        
+        <div class="flow" style="margin-top: 1.5rem;">
+          <div class="box box-browser">
+            🌐 Browser<br>
+            <small>❌ BLOK!</small>
+          </div>
+          <div class="arrow">⬅️</div>
+          <div style="text-align: center; color: var(--accent-red);">
+            <div>Yanıt</div>
+            <small>CORS header YOK!</small>
+          </div>
+          <div class="arrow">⬅️</div>
+          <div class="box box-tcmb">
+            🏦 TCMB<br>
+            <small>Sunucusu</small>
+          </div>
+        </div>
+      </div>
+      
+      <p>Tarayıcı kontrol eder: <em>"TCMB bana izin veriyor mu?"</em></p>
+      <p>→ <code>Access-Control-Allow-Origin</code> header yok → <strong>BLOK!</strong></p>
+      
+      <div class="result result-error">
+        ❌ CORS ERROR - Tarayıcı veriyi engeller!
+      </div>
+    </div>
+    
+    <!-- Senaryo 2 -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="icon">💚</span>
+        Senaryo 2: Backend → TCMB (Çalışır!)
+      </h2>
+      
+      <div class="diagram">
+        <div class="flow">
+          <div class="box box-backend">
+            🟢 Node.js<br>
+            <small>Backend</small>
+          </div>
+          <div class="arrow">➡️</div>
+          <div style="text-align: center; color: var(--text-secondary);">
+            <div>HTTP İstek</div>
+            <small>(Origin yok!)</small>
+          </div>
+          <div class="arrow">➡️</div>
+          <div class="box box-tcmb">
+            🏦 TCMB<br>
+            <small>Sunucusu</small>
+          </div>
+        </div>
+        
+        <div class="flow" style="margin-top: 1.5rem;">
+          <div class="box box-backend">
+            🟢 Node.js<br>
+            <small>✅ ALIR!</small>
+          </div>
+          <div class="arrow">⬅️</div>
+          <div style="text-align: center; color: var(--accent-green);">
+            <div>XML Veri</div>
+            <small>Tam içerik</small>
+          </div>
+          <div class="arrow">⬅️</div>
+          <div class="box box-tcmb">
+            🏦 TCMB<br>
+            <small>Sunucusu</small>
+          </div>
+        </div>
+      </div>
+      
+      <p>Node.js bir sunucudur, <strong>CORS kontrolü YAPMAZ!</strong></p>
+      <p>Doğrudan veriyi alır, kimse engellemez.</p>
+      
+      <div class="result result-success">
+        ✅ BAŞARILI - Veri alındı!
+      </div>
+    </div>
+    
+    <!-- Karşılaştırma Tablosu -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="icon">📊</span>
+        Karşılaştırma
+      </h2>
+      
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Özellik</th>
+            <th>🌐 Tarayıcı (Browser)</th>
+            <th>🟢 Node.js Backend</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CORS Kontrolü</strong></td>
+            <td><span class="check">✅</span> Yapar</td>
+            <td><span class="cross">❌</span> Yapmaz</td>
+          </tr>
+          <tr>
+            <td><strong>Origin Header</strong></td>
+            <td><span class="check">✅</span> Otomatik ekler</td>
+            <td><span class="cross">❌</span> Eklemez</td>
+          </tr>
+          <tr>
+            <td><strong>Kısıtlama</strong></td>
+            <td><span class="check">✅</span> Güvenlik için var</td>
+            <td><span class="cross">❌</span> Yok</td>
+          </tr>
+          <tr>
+            <td><strong>Amaç</strong></td>
+            <td>Kullanıcıyı korumak</td>
+            <td>Veri işlemek</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Özet -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="icon">💡</span>
+        Özet
+      </h2>
+      
+      <div class="quote browser">
+        <span class="label label-browser">BROWSER</span>
+        "Ben kullanıcıyı koruyorum! TCMB bana izin vermezse veriyi göstermem!"
+      </div>
+      
+      <div class="quote nodejs">
+        <span class="label label-nodejs">NODE.JS</span>
+        "Ben bir sunucuyum, istediğim yere istek atarım, kimse beni durduramaz!"
+      </div>
+      
+      <div class="summary-box">
+        <h3>🎯 Çözüm: Backend'i Proxy Olarak Kullan</h3>
+        <div class="code-block">
+Browser → Backend (aynı origin, CORS yok) → TCMB (sunucudan sunucuya, CORS yok)
+        </div>
+        <p style="margin-top: 1rem; color: var(--text-secondary);">
+          Bu sayede tarayıcı kendi backend'ine istek atar (aynı origin), 
+          backend de TCMB'ye istek atar (CORS kontrolü yok).
+        </p>
+      </div>
+    </div>
+    
+    <footer>
+      <p>📚 THK JavaScript Eğitimi - CORS Açıklaması</p>
+    </footer>
+  </div>
+</body>
+</html>
+
