@@ -7,6 +7,7 @@ services:
       - "3000:3000"  # Exposing port 3000
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
   frontend:
