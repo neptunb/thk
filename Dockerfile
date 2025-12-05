@@ -1,19 +1,25 @@
-# Base image for Node.js
+# Base image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy backend files
+# Copy only package files first (better layer caching)
 COPY backend/package*.json ./
-RUN npm install
-COPY backend .
 
-# Copy frontend files to the public directory
+# Install dependencies (includes devDependencies like nodemon)
+RUN npm install --omit=dev
+
+# Copy backend source code
+COPY backend/ ./
+
+# Copy frontend into public/
 RUN mkdir -p public
-COPY frontend public/
+COPY frontend/ public/
 
-# Expose port and start the backend
+# Expose backend port
 EXPOSE 3000
-CMD ["npm", "start"]
+
+# Start backend using the start script
+CMD ["node", "app.js"]
 
