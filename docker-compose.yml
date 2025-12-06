@@ -11,6 +11,7 @@ services:
       - /usr/src/app/node_modules
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
+    command: npx nodemon --watch . --ext js,json app.js
   frontend:
     container_name: frontend
     image: node:18-alpine

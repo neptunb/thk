@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Copy only package files first (better layer caching)
 COPY backend/package*.json ./
 
-RUN npm install --omit=dev
+RUN npm install
 
 # Copy backend source code
 COPY backend/ ./
