@@ -26,7 +26,7 @@ if (port === '8080') {
 
 document.getElementById('fetchData').addEventListener('click', async () => {
 
-  const url = `/api/currency`;
+  const url = `http://localhost:3000/api/currency`;
 
   try {
     const response = await fetch(url);
