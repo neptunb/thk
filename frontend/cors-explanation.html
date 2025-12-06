@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CORS Nedir? - Görsel Açıklama</title>
+  <title>What is CORS? - Visual Explanation</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
     
@@ -278,14 +278,14 @@
 </head>
 <body>
   <div class="container">
-    <h1>🔐 CORS Nedir?</h1>
-    <p class="subtitle">Cross-Origin Resource Sharing - <span class="highlight">Sadece Tarayıcıda Çalışır!</span></p>
+    <h1>🔐 What is CORS?</h1>
+    <p class="subtitle">Cross-Origin Resource Sharing - <span class="highlight">Only Works in Browser!</span></p>
     
-    <!-- Senaryo 1 -->
+    <!-- Scenario 1 -->
     <div class="section">
       <h2 class="section-title">
         <span class="icon">🌐</span>
-        Senaryo 1: Tarayıcı → TCMB (CORS Hatası)
+        Scenario 1: Browser → TCMB (CORS Error)
       </h2>
       
       <div class="diagram">
@@ -296,47 +296,47 @@
           </div>
           <div class="arrow">➡️</div>
           <div class="flow-label" style="color: var(--text-secondary);">
-            <div>HTTP İstek</div>
+            <div>HTTP Request</div>
             <small>Origin: localhost</small>
           </div>
           <div class="arrow">➡️</div>
           <div class="box box-tcmb">
             🏦 TCMB<br>
-            <small>Sunucusu</small>
+            <small>Server</small>
           </div>
         </div>
         
         <div class="flow" style="margin-top: 1.5rem;">
           <div class="box box-browser">
             🌐 Browser<br>
-            <small>❌ BLOK!</small>
+            <small>❌ BLOCKED!</small>
           </div>
           <div class="arrow">⬅️</div>
           <div class="flow-label" style="color: var(--accent-red);">
-            <div>Yanıt</div>
-            <small>CORS header YOK!</small>
+            <div>Response</div>
+            <small>No CORS header!</small>
           </div>
           <div class="arrow">⬅️</div>
           <div class="box box-tcmb">
             🏦 TCMB<br>
-            <small>Sunucusu</small>
+            <small>Server</small>
           </div>
         </div>
       </div>
       
-      <p>Tarayıcı kontrol eder: <em>"TCMB bana izin veriyor mu?"</em></p>
-      <p>→ <code>Access-Control-Allow-Origin</code> header yok → <strong>BLOK!</strong></p>
+      <p>Browser checks: <em>"Does TCMB allow me?"</em></p>
+      <p>→ No <code>Access-Control-Allow-Origin</code> header → <strong>BLOCKED!</strong></p>
       
       <div class="result result-error">
-        ❌ CORS ERROR - Tarayıcı veriyi engeller!
+        ❌ CORS ERROR - Browser blocks the data!
       </div>
     </div>
     
-    <!-- Senaryo 2 -->
+    <!-- Scenario 2 -->
     <div class="section">
       <h2 class="section-title">
         <span class="icon">💚</span>
-        Senaryo 2: Backend → TCMB (Çalışır!)
+        Scenario 2: Backend → TCMB (Works!)
       </h2>
       
       <div class="diagram">
@@ -347,115 +347,114 @@
           </div>
           <div class="arrow">➡️</div>
           <div class="flow-label" style="color: var(--text-secondary);">
-            <div>HTTP İstek</div>
-            <small>(Origin yok!)</small>
+            <div>HTTP Request</div>
+            <small>(No Origin!)</small>
           </div>
           <div class="arrow">➡️</div>
           <div class="box box-tcmb">
             🏦 TCMB<br>
-            <small>Sunucusu</small>
+            <small>Server</small>
           </div>
         </div>
         
         <div class="flow" style="margin-top: 1.5rem;">
           <div class="box box-backend">
             🟢 Node.js<br>
-            <small>✅ ALIR!</small>
+            <small>✅ RECEIVES!</small>
           </div>
           <div class="arrow">⬅️</div>
           <div class="flow-label" style="color: var(--accent-green);">
-            <div>XML Veri</div>
-            <small>Tam içerik</small>
+            <div>XML Data</div>
+            <small>Full content</small>
           </div>
           <div class="arrow">⬅️</div>
           <div class="box box-tcmb">
             🏦 TCMB<br>
-            <small>Sunucusu</small>
+            <small>Server</small>
           </div>
         </div>
       </div>
       
-      <p>Node.js bir sunucudur, <strong>CORS kontrolü YAPMAZ!</strong></p>
-      <p>Doğrudan veriyi alır, kimse engellemez.</p>
+      <p>Node.js is a server, <strong>it does NOT check CORS!</strong></p>
+      <p>It receives data directly, no one blocks it.</p>
       
       <div class="result result-success">
-        ✅ BAŞARILI - Veri alındı!
+        ✅ SUCCESS - Data received!
       </div>
     </div>
     
-    <!-- Karşılaştırma Tablosu -->
+    <!-- Comparison Table -->
     <div class="section">
       <h2 class="section-title">
         <span class="icon">📊</span>
-        Karşılaştırma
+        Comparison
       </h2>
       
       <table class="comparison-table">
         <thead>
           <tr>
-            <th>Özellik</th>
-            <th>🌐 Tarayıcı (Browser)</th>
+            <th>Feature</th>
+            <th>🌐 Browser</th>
             <th>🟢 Node.js Backend</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>CORS Kontrolü</strong></td>
-            <td><span class="check">✅</span> Yapar</td>
-            <td><span class="cross">❌</span> Yapmaz</td>
+            <td><strong>CORS Check</strong></td>
+            <td><span class="check">✅</span> Yes</td>
+            <td><span class="cross">❌</span> No</td>
           </tr>
           <tr>
             <td><strong>Origin Header</strong></td>
-            <td><span class="check">✅</span> Otomatik ekler</td>
-            <td><span class="cross">❌</span> Eklemez</td>
+            <td><span class="check">✅</span> Auto-adds</td>
+            <td><span class="cross">❌</span> Doesn't add</td>
           </tr>
           <tr>
-            <td><strong>Kısıtlama</strong></td>
-            <td><span class="check">✅</span> Güvenlik için var</td>
-            <td><span class="cross">❌</span> Yok</td>
+            <td><strong>Restriction</strong></td>
+            <td><span class="check">✅</span> For security</td>
+            <td><span class="cross">❌</span> None</td>
           </tr>
           <tr>
-            <td><strong>Amaç</strong></td>
-            <td>Kullanıcıyı korumak</td>
-            <td>Veri işlemek</td>
+            <td><strong>Purpose</strong></td>
+            <td>Protect the user</td>
+            <td>Process data</td>
           </tr>
         </tbody>
       </table>
     </div>
     
-    <!-- Özet -->
+    <!-- Summary -->
     <div class="section">
       <h2 class="section-title">
         <span class="icon">💡</span>
-        Özet
+        Summary
       </h2>
       
       <div class="quote browser">
         <span class="label label-browser">BROWSER</span>
-        "Ben kullanıcıyı koruyorum! TCMB bana izin vermezse veriyi göstermem!"
+        "I protect the user! If TCMB doesn't allow me, I won't show the data!"
       </div>
       
       <div class="quote nodejs">
         <span class="label label-nodejs">NODE.JS</span>
-        "Ben bir sunucuyum, istediğim yere istek atarım, kimse beni durduramaz!"
+        "I'm a server, I can request anywhere I want, no one can stop me!"
       </div>
       
       <div class="summary-box">
-        <h3>🎯 Çözüm: Backend'i Proxy Olarak Kullan</h3>
+        <h3>🎯 Solution: Use Backend as a Proxy</h3>
         <div class="code-block">
-Browser → Backend (aynı origin, CORS yok) → TCMB (sunucudan sunucuya, CORS yok)
+Browser → Backend (same origin, no CORS) → TCMB (server-to-server, no CORS)
         </div>
         <p style="margin-top: 1rem; color: var(--text-secondary);">
-          Bu sayede tarayıcı kendi backend'ine istek atar (aynı origin), 
-          backend de TCMB'ye istek atar (CORS kontrolü yok).
+          This way, the browser sends requests to its own backend (same origin), 
+          and the backend sends requests to TCMB (no CORS check).
         </p>
       </div>
     </div>
     
     <footer>
-      <p>📚 THK JavaScript Eğitimi - CORS Açıklaması</p>
+      <p>📚 THK JavaScript Training - CORS Explanation</p>
     </footer>
   </div>
 </body>
 </html>
-
