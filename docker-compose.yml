@@ -1,5 +1,6 @@
 services:
   app:
+    container_name: backend
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
   frontend:
+    container_name: frontend
     image: node:18-alpine
     working_dir: /app
     volumes:
