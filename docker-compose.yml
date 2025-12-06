@@ -11,6 +11,7 @@ services:
       - /usr/src/app/node_modules
       - ./frontend:/usr/src/app/public
     restart: unless-stopped
+    command: npx nodemon --watch . --ext js,json app.js
   # Frontend service
   # live code for FE update at localhost:8080
   frontend:
