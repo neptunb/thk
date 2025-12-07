@@ -62,7 +62,7 @@ thk_examples
    docker compose down
    ```
 
-ANOTHER WAY TO RUN AT LOCAL MACHINES
+# ANOTHER WAY TO RUN AT LOCAL MACHINES
 ## Download from GitHub
 https://github.com/neptunb/thk/blob/Zip-File-With-Local-Git-Repo/THK.zip
 
