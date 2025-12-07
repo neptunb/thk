@@ -3,13 +3,6 @@ JS Event Loop Examples
 
 # thk_examples Instructions
 
-## Download from GitHub
-https://github.com/neptunb/thk/blob/Zip-File-With-Local-Git-Repo/THK.zip
-
-<img width="951" height="455" alt="THK-zip" src="https://github.com/user-attachments/assets/fb272e7b-9d68-4b84-8bcd-f37a57f6f43c" />
-
-
-
 ### Folder Structure
 
 ```
@@ -69,3 +62,8 @@ thk_examples
    docker compose down
    ```
 
+ANOTHER WAY TO RUN AT LOCAL MACHINES
+## Download from GitHub
+https://github.com/neptunb/thk/blob/Zip-File-With-Local-Git-Repo/THK.zip
+
+<img width="951" height="455" alt="THK-zip" src="https://github.com/user-attachments/assets/fb272e7b-9d68-4b84-8bcd-f37a57f6f43c" />
