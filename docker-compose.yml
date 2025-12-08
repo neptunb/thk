@@ -5,19 +5,27 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"  # Exposing port 3000
+      - "3000:3000"
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend:/usr/src/app:Z        # SELinux uyumlu mount
       - /usr/src/app/node_modules
-      - ./frontend:/usr/src/app/public
+      - ./frontend:/usr/src/app/public:Z
     restart: unless-stopped
     command: npx nodemon --watch . --ext js,json app.js
+    security_opt:
+      - label=disable   # Fedora SELinux EACCES çözer
+      
+
   frontend:
     container_name: frontend
     image: node:18-alpine
     working_dir: /app
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app:Z              # SELinux uyumlu mount
+    environment:
+      - CHOKIDAR_USEPOLLING=true       # chokidar için zorunlu
     ports:
       - "8080:8080"
     command: npx live-server --port=8080 --open=/index.html --watch=.
+    security_opt:
+      - label=disable                  # dosya izleme EACCES hatasını çözer
